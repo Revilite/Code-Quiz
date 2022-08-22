@@ -1,19 +1,66 @@
+/* For all */
+
+:root{
+    --textColor: #C724B1;
+}
+
 body{
     background-color: #232425;
+    
 }
-header{
-    display:flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    font-size: 34px;
-    color: #C724B1;
+
+
+/* For Start Screen */
+
+.start{
+    display: flex;
+    flex-direction: column;
     font-family: Arial, Helvetica, sans-serif;
-    padding-left: 20px;
-    padding-right: 20px;
+    color: var(--textColor);
+}
+.start header{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 34px;
+    color: var(--textColor);
+   
 }
 
-header h1{
-    font-size: 50px;
+.start header h1{
+    font-size: 70px;
+    font-weight: bolder;
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+.highscoreButton{
+    transition: all 200ms ease-in-out;
 }
 
+.highscoreButton:hover{
+    color: #ff1818;
+}
+.start main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 36px;
+}
 
+.startButton{
+    font-size: 26px;
+    font-weight: bolder;
+    padding: 10px;
+    background: linear-gradient(#FF10F0, var(--textColor)); 
+    color: white;   
+    border-color: white;
+    transition: all 300ms ease-in-out;
+}
+
+.startButton:hover{
+    box-shadow: 0 0 10px #FF10F0;
+}
+
+/* For Testing Screen */
