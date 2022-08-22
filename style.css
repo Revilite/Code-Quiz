@@ -70,10 +70,29 @@ body{
     background-color: #343536;
     border-radius: 10px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 .test header {
     color: var(--textColor);
     font-size: 30px;
+}
+
+.test main{
+    width: 100%;
+}
+
+ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+li{
+    width:30%;
+    padding: 25px;
+    background: linear-gradient(#FF10F0, var(--textColor)); 
+    border: 3px solid black;
 }

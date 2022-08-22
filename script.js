@@ -26,25 +26,10 @@ var screenSelector = function(screen){
 
 }
 
-// Initial Screen
-screenSelector(1);
-
-//Links to other screens
-startToTest.addEventListener("click", function(){
-    screenSelector(1);
-    testing();
-})
-
-startToHs.addEventListener("click", function(){
-    screenSelector(2);
-})
-
-
-
 
 
 var testing = function(){
-    //questions will be randomly generated for placement
+    
     //declaraction for testing phase
 var questions = [
     {
@@ -65,25 +50,28 @@ var questions = [
 ]
 
 var questPlacement = document.querySelector(".question");
-var questionSelection = -2;
-var questionCheck = -1;
 
-//remove questions after answering 
 
-for(var i = 0; i <= questions.length; i++){
-    questionCheck = questionSelection;
-    questionSelection = Math.floor(Math.random * questions.length);
-    
-    while (questionSelection == questionCheck ){
-        questionSelection = Math.floor(Math.random * question.length);
-    }
-
-questPlacement.textContent() = "Question " + (i + 1)+ ": " + questions[questionSelection].question; 
 }
 
 
-questPlacement.textContent = "Hello World";
-}
+
+// Initial Screen
+screenSelector(1);
+
+//Links to other screens
+startToTest.addEventListener("click", function(){
+    screenSelector(1);
+    testing();
+})
+
+startToHs.addEventListener("click", function(){
+    screenSelector(2);
+})
+
+
+
+
 
 
 //Delete later
