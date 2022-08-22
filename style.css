@@ -64,3 +64,16 @@ body{
 }
 
 /* For Testing Screen */
+
+
+.test{
+    background-color: #343536;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.test header {
+    color: var(--textColor);
+    font-size: 30px;
+}
