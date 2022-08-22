@@ -51,7 +51,9 @@ var questions = [
 
 var questPlacement = document.querySelector(".question");
 
-
+var questionGenerator = function(){
+    
+}
 }
 
 
