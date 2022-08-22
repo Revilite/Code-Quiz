@@ -1,0 +1,11 @@
+header{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 21px;
+}
+
+.button{
+    color: #232425;
+    font-size: 56px;
+}
