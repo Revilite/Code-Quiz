@@ -1,8 +1,11 @@
+
+
+
 var startScreen = document.querySelector(".start");
 var testScreen = document.querySelector(".test");
 var hsScreen = document.querySelector(".highscore");
-var score = 15;
-var timer = 75;
+var score = 0;
+
 
 
 
@@ -31,15 +34,16 @@ var screenSelector = function(screen){
 }
 
 
-// Initial Screen
-screenSelector(2);
-
-
+// // Initial Screen
+// screenSelector(1);
+// testing();
+var counter = 0;
 //the seven layers of hell
-var counter = 1;
-var questionGenerator = function(){
 
-     
+
+   counter++;
+   var ansPosition = Math.floor(Math.random() * 4);
+   var questionGenerator = function(){
     //declaraction for testing phase
 var questions = [
     {
@@ -49,69 +53,164 @@ var questions = [
         wrongAnswer2: "Number",
         wrongAnswer3: "Booleans",
     },
+    
     {
         question: "If statements check for",
         answer: "True Values",
         wrongAnswer1: "False Values",
         wrongAnswer2: "Other If statements",
         wrongAnswer3: "Numbers",
-    }
+    },
+    {
+        question: "If statements check for",
+        answer: "True Values",
+        wrongAnswer1: "False Values",
+        wrongAnswer2: "Other If statements",
+        wrongAnswer3: "Numbers",
+    },
+    {
+        question: "If statements check for",
+        answer: "True Values",
+        wrongAnswer1: "False Values",
+        wrongAnswer2: "Other If statements",
+        wrongAnswer3: "Numbers",
+    },
+    {
+        question: "If statements check for",
+        answer: "True Values",
+        wrongAnswer1: "False Values",
+        wrongAnswer2: "Other If statements",
+        wrongAnswer3: "Numbers",
+    },
+    {
+        question: "If statements check for",
+        answer: "True Values",
+        wrongAnswer1: "False Values",
+        wrongAnswer2: "Other If statements",
+        wrongAnswer3: "Numbers",
+    },
+    {
+        question: "If statements check for",
+        answer: "True Values",
+        wrongAnswer1: "False Values",
+        wrongAnswer2: "Other If statements",
+        wrongAnswer3: "Numbers",
+    },
+    
+
     
 ]
-
+    //Creates Question Header
     var questPlacement = document.querySelector(".question");
     questPlacement.textContent = "Question " + counter + ": " + questions[counter - 1].question;
-    var ansPosition = Math.floor(Math.random() * 4);
+
+    //Randomizes answers 
+    ansPosition = Math.floor(Math.random() * 4);
     var wrongAns1 = Math.floor(Math.random()*4);
     var wrongAns2 = Math.floor(Math.random()*4);
     var wrongAns3 = Math.floor(Math.random()*4);
 
-    console.log(ansPosition);
 
-    while(ansPosition == wrongAns1){
+    //confirms that the answers are different
+    while(ansPosition === wrongAns1){
         wrongAns1 = Math.floor(Math.random()* 4);
     }
-    console.log(ansPosition);
-    while(ansPosition == wrongAns2 || wrongAns1 == wrongAns2){
+    console.log(ansPosition + " first check")
+
+    while(ansPosition === wrongAns2 || wrongAns1 === wrongAns2){
         wrongAns2 = Math.floor(Math.random() * 4)
     }
-    console.log(ansPosition);
-    while(ansPosition == wrongAns3 || wrongAns1 == wrongAns3 || wrongAns2 == wrongAns3){
+    console.log(ansPosition + " seccond check")
+    while(ansPosition === wrongAns3 || wrongAns1 === wrongAns3 || wrongAns2 === wrongAns3){
         wrongAns3 = Math.floor(Math.random()*4);
     }
-    console.log(ansPosition);
+    
+
+    console.log(ansPosition + " third check")
    
-  
+    //collect list positioning
     var ansPlacement = document.querySelector(".ans" + ansPosition);
     var wrongAnsPosition1 = document.querySelector(".ans" + wrongAns1);
     var wrongAnsPosition2 = document.querySelector(".ans" + wrongAns2);
     var wrongAnsPosition3 = document.querySelector(".ans" + wrongAns3);
-    console.log(ansPosition)
-    console.log(ansPlacement)
-
+   
+    //places answers in list
     ansPlacement.textContent = questions[counter - 1].answer;
     wrongAnsPosition1.textContent = questions[counter - 1].wrongAnswer1;
     wrongAnsPosition2.textContent = questions[counter - 1].wrongAnswer2;
     wrongAnsPosition3.textContent = questions[counter - 1].wrongAnswer3;
-    console.log(ansPlacement)
-    console.log(ansPosition)
-    return ansPosition;
-}
+ 
 
-//hell
+    //sets consisitent right answer
+    ansPlacement.setAttribute("data-rAns", "True");
+    
+    return [ansPosition, wrongAns1, wrongAns2, wrongAns3];
+    }
+
+   
+
+
+    
 
 var testing = function(){
-console.log(questionGenerator() + " this is the right answer");
+
+    var global = questionGenerator();
+
+    var answerList = document.querySelector(".answerList");
+    answerList.addEventListener("click", function(event){
+        var element = event.target;
+        if ( element.matches(".ans" + global[1]) ||
+            element.matches(".ans" + global[2]) || element.matches(".ans" + global[3] )){
+            counter++;
+            questionGenerator();
+            
+        } 
+        if (element.matches(".ans" + global[0])){
+            console.log(global[0] + "this is the global variable")
+            score += 6;
+            counter++;
+            questionGenerator();
+        }
+       
+    }
+    )
+    // console.log(questionGenerator() + " this is the right answer");
+    // timerText();
+    
 
 
-var answerCheck = document.querySelector(".ans" + questionGenerator())
-
-answerCheck.addEventListener("click", function(){
-    score = score + 5;
-    questionGenerator();
-})
 }
 
+
+
+
+// //Timer Function
+// var timerText = function(){
+//     var timeLeft = document.querySelector(".timerText");
+//     var timer = 5;
+//     timeLeft.textContent = "Time: " + timer + " seconds";
+//     timer--;
+//     var timerInterval = setInterval(function()
+//     {
+//         if(timer > 1){
+//             timeLeft.textContent = "Time: " + timer + " seconds";
+//             timer--;
+//         }
+//         else if (timer == 1){
+//             timeLeft.textContent = "Time: " + timer + " second";
+//             timer--;
+//         }
+//         // else{
+//         //     timeLeft.texContent = "Time: " + timer + " seconds";
+//         //     clearInterval(timerInterval);
+//         //     screenSelector(2);
+//         // }
+//     }, 1000);
+// }
+
+
+
+//hell
 
 
 
@@ -182,5 +281,7 @@ resetButton.addEventListener("click", function(){
 
 
 
+
+screenSelector(0);
 
 
