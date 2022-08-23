@@ -3,6 +3,13 @@ var testScreen = document.querySelector(".test");
 var hsScreen = document.querySelector(".highscore");
 var startToTest = document.querySelector(".startButton");
 var startToHs = document.querySelector(".highscoreButton"); 
+var score = 0;
+var timer = 75;
+var counter = 1;
+
+
+
+
 
 
 
@@ -26,18 +33,17 @@ var screenSelector = function(screen){
 
 }
 
+var questionGenerator = function(){
 
-
-var testing = function(){
-    
+     
     //declaraction for testing phase
 var questions = [
     {
         question: "Commonly used data types DO NOT include",
-        answer: "alerts",
-        wrongAnswer1: "string",
-        wrongAnswer2: "number",
-        wrongAnswer3: "booleans",
+        answer: "Alerts",
+        wrongAnswer1: "String",
+        wrongAnswer2: "Number",
+        wrongAnswer3: "Booleans",
     },
     {
         question: "If statements check for",
@@ -49,11 +55,56 @@ var questions = [
     
 ]
 
-var questPlacement = document.querySelector(".question");
+    var questPlacement = document.querySelector(".question");
+    questPlacement.textContent = "Question " + counter + ": " + questions[counter - 1].question;
+    var ansPosition = Math.floor(Math.random() * 4);
+    var wrongAns1 = Math.floor(Math.random()*4);
+    var wrongAns2 = Math.floor(Math.random()*4);
+    var wrongAns3 = Math.floor(Math.random()*4);
 
-var questionGenerator = function(){
-    
+    console.log(ansPosition);
+
+    while(ansPosition == wrongAns1){
+        wrongAns1 = Math.floor(Math.random()* 4);
+    }
+    console.log(ansPosition);
+    while(ansPosition == wrongAns2 || wrongAns1 == wrongAns2){
+        wrongAns2 = Math.floor(Math.random() * 4)
+    }
+    console.log(ansPosition);
+    while(ansPosition == wrongAns3 || wrongAns1 == wrongAns3 || wrongAns2 == wrongAns3){
+        wrongAns3 = Math.floor(Math.random()*4);
+    }
+    console.log(ansPosition);
+   
+  
+    var ansPlacement = document.querySelector(".ans" + ansPosition);
+    var wrongAnsPosition1 = document.querySelector(".ans" + wrongAns1);
+    var wrongAnsPosition2 = document.querySelector(".ans" + wrongAns2);
+    var wrongAnsPosition3 = document.querySelector(".ans" + wrongAns3);
+    console.log(ansPosition)
+    console.log(ansPlacement)
+
+    ansPlacement.textContent = questions[counter - 1].answer;
+    wrongAnsPosition1.textContent = questions[counter - 1].wrongAnswer1;
+    wrongAnsPosition2.textContent = questions[counter - 1].wrongAnswer2;
+    wrongAnsPosition3.textContent = questions[counter - 1].wrongAnswer3;
+    console.log(ansPlacement)
+    console.log(ansPosition)
+    return ansPosition;
 }
+
+
+var testing = function(){
+console.log(questionGenerator() + " this is the right answer");
+
+
+var answerCheck = document.querySelector(".ans" + questionGenerator())
+
+answerCheck.addEventListener("click", function(){
+    score = score + 5;
+    questionGenerator();
+})
 }
 
 

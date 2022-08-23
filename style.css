@@ -71,7 +71,6 @@ body{
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     margin: 15px;
 }
@@ -89,13 +88,14 @@ ul {
     display: flex;
     flex-wrap: wrap;
     list-style: none;
+    margin-top: 0px;
     
 }
 
 li{
     width:45%;
-    padding-top: 175px;
-    padding-bottom: 175px; 
+    padding-top: 120px;
+    padding-bottom: 120px; 
     margin: 15px;
     font-size: larger;
     font-weight: bolder;
