@@ -110,7 +110,7 @@ answerCheck.addEventListener("click", function(){
 
 
 // Initial Screen
-screenSelector(1);
+screenSelector(2);
 
 //Links to other screens
 startToTest.addEventListener("click", function(){
@@ -129,4 +129,3 @@ startToHs.addEventListener("click", function(){
 
 //Delete later
 
-testing();
