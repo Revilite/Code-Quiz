@@ -1,11 +1,8 @@
 var startScreen = document.querySelector(".start");
 var testScreen = document.querySelector(".test");
 var hsScreen = document.querySelector(".highscore");
-var startToTest = document.querySelector(".startButton");
-var startToHs = document.querySelector(".highscoreButton"); 
-var score = 0;
+var score = 15;
 var timer = 75;
-var counter = 1;
 
 
 
@@ -34,8 +31,12 @@ var screenSelector = function(screen){
 }
 
 
-//the seven layers of hell
+// Initial Screen
+screenSelector(2);
 
+
+//the seven layers of hell
+var counter = 1;
 var questionGenerator = function(){
 
      
@@ -115,29 +116,69 @@ answerCheck.addEventListener("click", function(){
 
 
 
-// Initial Screen
-screenSelector(2);
+
+
 
 //Links to other screens
+var startToTest = document.querySelector(".startButton");
 startToTest.addEventListener("click", function(){
     screenSelector(1);
     testing();
 })
-
+var startToHs = document.querySelector(".highscoreButton"); 
 startToHs.addEventListener("click", function(){
     screenSelector(2);
 })
-
-//adds li to html page
-var highscoreAdder = document.querySelector("#hsButton");
-highscoreAdder.addEventListener("click", function(){
-    var initials = document.querySelector("#textbox").value;
-    var listEL = document.querySelector("#list");
-    var miniEl = document.createElement("li");
-    miniEl.textContent = initials + ": " + score;
-    listEL.appendChild(miniEl);
+var hsToStart = document.querySelector(".goBack");
+hsToStart.addEventListener("click", function(){
+    screenSelector(0);
 })
 
+var highscores = {
+    initial: document.querySelector(".textbox").value,
+    score: score,
+};
+
+
+var renderList = function(){
+    var lastList = JSON.parse(localStorage.getItem("highscores"));
+    if (lastList !== null){
+
+        document.querySelector(".list").textContent = initial + " " + score;
+    }
+}
+
+
+localStorage.setItem("highscores", JSON.stringify(highscores))
+
+//adds lists to scoreboard
+
+var listCounter = 0;
+var listEL = document.querySelector(".list");
+var miniEl = document.createElement("li");
+var highscoreAdder = document.querySelector(".hsButton");
+var scoreText = document.querySelector(".score");
+scoreText.textContent = "Your score is: " + score;
+highscoreAdder.addEventListener("click", function(){
+
+    var initials = document.querySelector(".textbox").value;
+    listEL = document.querySelector(".list");
+    miniEl = document.createElement("li");
+    miniEl.textContent = initials + ": " + score;
+    listEL.appendChild(miniEl);
+    listCounter++;
+    console.log(listCounter);
+
+})
+
+//Reset button for highscore
+var resetButton = document.querySelector(".reset");
+resetButton.addEventListener("click", function(){
+    while(listEL.children.length > 0){
+        listEL.children[0].remove();
+        console.log("should Remove");
+    }
+})
 
 
 
