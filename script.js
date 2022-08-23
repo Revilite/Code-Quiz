@@ -33,6 +33,9 @@ var screenSelector = function(screen){
 
 }
 
+
+//the seven layers of hell
+
 var questionGenerator = function(){
 
      
@@ -94,6 +97,7 @@ var questions = [
     return ansPosition;
 }
 
+//hell
 
 var testing = function(){
 console.log(questionGenerator() + " this is the right answer");
@@ -106,6 +110,8 @@ answerCheck.addEventListener("click", function(){
     questionGenerator();
 })
 }
+
+
 
 
 
@@ -122,10 +128,18 @@ startToHs.addEventListener("click", function(){
     screenSelector(2);
 })
 
+//adds li to html page
+var highscoreAdder = document.querySelector("#hsButton");
+highscoreAdder.addEventListener("click", function(){
+    var initials = document.querySelector("#textbox").value;
+    var listEL = document.querySelector("#list");
+    var miniEl = document.createElement("li");
+    miniEl.textContent = initials + ": " + score;
+    listEL.appendChild(miniEl);
+})
 
 
 
 
 
-//Delete later
 

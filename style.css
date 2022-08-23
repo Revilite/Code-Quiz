@@ -7,6 +7,7 @@
 body{
     background-color: #232425;
     height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 
@@ -84,7 +85,7 @@ body{
     width: 100%;
 }
 
-ul {
+.test ul {
     display: flex;
     flex-wrap: wrap;
     list-style: none;
@@ -92,7 +93,7 @@ ul {
     
 }
 
-li{
+.test li{
     width:45%;
     padding-top: 120px;
     padding-bottom: 120px; 
@@ -107,7 +108,7 @@ li{
 
 }
 
-li:hover{
+.test li:hover{
     box-shadow: inset 0 0 50px white;
 }
 
@@ -119,4 +120,11 @@ li:hover{
     color: var(--textColor);
     font-size: 19px;
 
+}
+
+.highscore li {
+    font-size: 30px;
+    list-style: none;
+    padding-right: 160px;
+    color: white;
 }

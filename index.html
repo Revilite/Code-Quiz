@@ -45,13 +45,20 @@
     <section class ="highscore">
         <header>
             <h3>Highscore</h3>
+            <button id="goBack">Go to Start Screen</button>
+            <button id="reset"> Reset Scoreboard</button>
         </header>
         <main>
-            <ul>
-                <li></li>
+            <ul id="list">
+                <li>Jacob :)</li>
             </ul>
         </main>
         <footer>
+            <form name="highscores"  method="POST">
+                Enter your Initials <br>
+                <input type="text" name="inputbox"  id="textbox" >
+                <input type="button" name="button" id="hsButton" value="Enter">
+            </form>
 
         </footer>
     </section>
