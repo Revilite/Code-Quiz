@@ -4,12 +4,6 @@ var hsScreen = document.querySelector(".highscore");
 var score = 0;
 var timer = 60;
 
-
-
-
-
-
-
 // Chooses screen :)
 var screenSelector = function(screen){
     if (screen == 0){
@@ -31,8 +25,6 @@ var screenSelector = function(screen){
 }
 
 
-
-
     //declaraction of questions and answers
    var questions = [
     {
@@ -51,39 +43,39 @@ var screenSelector = function(screen){
         wrongAnswer3: "Numbers",
     },
     {
-        question: "If statements check for",
-        answer: "True Values",
-        wrongAnswer1: "False Values",
-        wrongAnswer2: "Other If statements",
-        wrongAnswer3: "Numbers",
+        question: "Javascript is what type of language",
+        answer: "Object Oriented",
+        wrongAnswer1: "Markup",
+        wrongAnswer2: "Cascading style sheets",
+        wrongAnswer3: "None of the above",
     },
     {
-        question: "If statements check for",
-        answer: "True Values",
-        wrongAnswer1: "False Values",
-        wrongAnswer2: "Other If statements",
-        wrongAnswer3: "Numbers",
+        question: "Which Javascript command is a loop",
+        answer: "for",
+        wrongAnswer1: "console.log",
+        wrongAnswer2: "var",
+        wrongAnswer3: "window.alert",
     },
     {
-        question: "If statements check for",
-        answer: "True Values",
-        wrongAnswer1: "False Values",
-        wrongAnswer2: "Other If statements",
-        wrongAnswer3: "Numbers",
+        question: "Javascript can be used for",
+        answer: "All of the above",
+        wrongAnswer1: "Changing values",
+        wrongAnswer2: "Changing elements in HTML",
+        wrongAnswer3: "Changing styles",
     },
     {
-        question: "If statements check for",
-        answer: "True Values",
-        wrongAnswer1: "False Values",
-        wrongAnswer2: "Other If statements",
-        wrongAnswer3: "Numbers",
+        question: "Which function is used to change a element into a string",
+        answer: "stringify()",
+        wrongAnswer1: "parse()",
+        wrongAnswer2: "global()",
+        wrongAnswer3: "string()",
     },
     {
-        question: "If statements check for",
-        answer: "True Values",
-        wrongAnswer1: "False Values",
-        wrongAnswer2: "Other If statements",
-        wrongAnswer3: "Numbers",
+        question: ".pop() does what to a array or string",
+        answer: "Removes last item",
+        wrongAnswer1: "Makes array most important variable",
+        wrongAnswer2: "removes the first item",
+        wrongAnswer3: "nothing",
     },
 ]
 
