@@ -1,11 +1,8 @@
-
-
-
 var startScreen = document.querySelector(".start");
 var testScreen = document.querySelector(".test");
 var hsScreen = document.querySelector(".highscore");
 var score = 0;
-var timer = 75;
+var timer = 60;
 
 
 
@@ -34,16 +31,9 @@ var screenSelector = function(screen){
 }
 
 
-// // Initial Screen
-// screenSelector(1);
-// testing();
-var counter = 0;
-//the seven layers of hell
 
 
-   counter++;
-
-
+    //declaraction of questions and answers
    var questions = [
     {
         question: "Commonly used data types DO NOT include",
@@ -95,28 +85,22 @@ var counter = 0;
         wrongAnswer2: "Other If statements",
         wrongAnswer3: "Numbers",
     },
-    
-
-    
 ]
 
+var counter = 0;
 
+counter ++;
+
+//Randomizes questions
    var questionGenerator = function(){
-    // //declaraction for testing phase
-    // var ansPlacement = document.querySelector(".ans0");
-    // var wrongAnsPosition1 = document.querySelector(".ans1");
-    // var wrongAnsPosition2 = document.querySelector(".ans2");
-    // var wrongAnsPosition3 = document.querySelector(".ans3");
 
 
-    // ansPlacement.setAttribute("data-rAns", "False");
-    // wrongAnsPosition1.setAttribute("data-rAns", "False");
-    // wrongAnsPosition2.setAttribute("data-rAns", "False");
-    // wrongAnsPosition3.setAttribute("data-rAns", "False");
-
-
-
-    //Creates Question Header
+   
+    if(counter > questions.length){
+        screenSelector(2);
+        counter = 0;
+    }
+ //Creates Question Header
     var questPlacement = document.querySelector(".question");
     questPlacement.textContent = "Question " + counter + ": " + questions[counter - 1].question;
 
@@ -168,17 +152,10 @@ var counter = 0;
     }
 
    
-
-
-    
-
+// Quiz Screen
 var testing = function(){
 
-
     timerText();
-    
-
-    
 
     var answerList = document.querySelector(".answerList");
     answerList.addEventListener("click", function(event){
@@ -197,15 +174,9 @@ var testing = function(){
             timer -= 10;
            console.log("Wrong anser");
            counter++;
-         
-    
         }
-
-
     }
     )
-
-
 }
     
     
@@ -218,7 +189,7 @@ var testing = function(){
 //Timer Function
 var timerText = function(){
     var timeLeft = document.querySelector(".timerText");
-    timer = 75;
+    timer = 60;
     timeLeft.textContent = "Time: " + timer + " seconds";
     timer--;
     var timerInterval = setInterval(function()
@@ -241,7 +212,6 @@ var timerText = function(){
 
 
 
-//hell
 
 
 
@@ -252,6 +222,7 @@ var timerText = function(){
 //Links to other screens
 var startToTest = document.querySelector(".startButton");
 startToTest.addEventListener("click", function(){
+    counter = 1;
     screenSelector(1);
     testing();
 })
@@ -262,6 +233,8 @@ startToHs.addEventListener("click", function(){
 var hsToStart = document.querySelector(".goBack");
 hsToStart.addEventListener("click", function(){
     screenSelector(0);
+    score = 0;
+    counter = 1;
 })
 
 var highscores = {
