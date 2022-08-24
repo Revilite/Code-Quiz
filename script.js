@@ -43,21 +43,8 @@ var counter = 0;
 
    counter++;
 
-   var questionGenerator = function(){
-    //declaraction for testing phase
-    var ansPlacement = document.querySelector(".ans0");
-    var wrongAnsPosition1 = document.querySelector(".ans1");
-    var wrongAnsPosition2 = document.querySelector(".ans2");
-    var wrongAnsPosition3 = document.querySelector(".ans3");
 
-
-    ansPlacement.setAttribute("data-rAns", "False");
-    wrongAnsPosition1.setAttribute("data-rAns", "False");
-    wrongAnsPosition2.setAttribute("data-rAns", "False");
-    wrongAnsPosition3.setAttribute("data-rAns", "False");
-
-
-var questions = [
+   var questions = [
     {
         question: "Commonly used data types DO NOT include",
         answer: "Alerts",
@@ -112,6 +99,23 @@ var questions = [
 
     
 ]
+
+
+   var questionGenerator = function(){
+    // //declaraction for testing phase
+    // var ansPlacement = document.querySelector(".ans0");
+    // var wrongAnsPosition1 = document.querySelector(".ans1");
+    // var wrongAnsPosition2 = document.querySelector(".ans2");
+    // var wrongAnsPosition3 = document.querySelector(".ans3");
+
+
+    // ansPlacement.setAttribute("data-rAns", "False");
+    // wrongAnsPosition1.setAttribute("data-rAns", "False");
+    // wrongAnsPosition2.setAttribute("data-rAns", "False");
+    // wrongAnsPosition3.setAttribute("data-rAns", "False");
+
+
+
     //Creates Question Header
     var questPlacement = document.querySelector(".question");
     questPlacement.textContent = "Question " + counter + ": " + questions[counter - 1].question;
@@ -139,27 +143,26 @@ var questions = [
     
 
    
-    //collect list positioning
-     ansPlacement = document.querySelector(".ans" + ansPosition);
-     wrongAnsPosition1 = document.querySelector(".ans" + wrongAns1);
-     wrongAnsPosition2 = document.querySelector(".ans" + wrongAns2);
-     wrongAnsPosition3 = document.querySelector(".ans" + wrongAns3);
+  
+          //collect list positioning
+          var ansPlacement = document.querySelector(".ans" +ansPosition);
+          var wrongAnsPosition1 = document.querySelector(".ans" + wrongAns1);
+          var wrongAnsPosition2 = document.querySelector(".ans" + wrongAns2);
+          var wrongAnsPosition3 = document.querySelector(".ans" + wrongAns3);
+      
+              //sets consisitent right answer
+              ansPlacement.setAttribute("data-rAns", "True");
+      
+      
+          //places answers in list
+          ansPlacement.textContent = questions[counter - 1].answer;
+          wrongAnsPosition1.textContent = questions[counter - 1].wrongAnswer1;
+          wrongAnsPosition2.textContent = questions[counter - 1].wrongAnswer2;
+          wrongAnsPosition3.textContent = questions[counter - 1].wrongAnswer3;
 
     
-        //sets consisitent right answer
-        ansPlacement.setAttribute("data-rAns", "True");
-
-
-    //places answers in list
-    ansPlacement.textContent = questions[counter - 1].answer;
-    wrongAnsPosition1.textContent = questions[counter - 1].wrongAnswer1;
-    wrongAnsPosition2.textContent = questions[counter - 1].wrongAnswer2;
-    wrongAnsPosition3.textContent = questions[counter - 1].wrongAnswer3;
- 
-
-
-    
-    var ansSaver = ansPlacement.getAttribute("data-rAns");
+    var tester = [ansPosition, wrongAns1, wrongAns2, wrongAns3] + " Original answers";
+    console.log(tester);
 
     return [ansPosition, wrongAns1, wrongAns2, wrongAns3];
     }
@@ -172,31 +175,37 @@ var questions = [
 var testing = function(){
 
 
-    // timerText();
+    timerText();
+    
 
-    questionGenerator();
+    
 
     var answerList = document.querySelector(".answerList");
     answerList.addEventListener("click", function(event){
-        
-        var global = questionGenerator();
-  
         var element = event.target;
+        var global = questionGenerator();
+        console.log(global + " answers after global")
+        
+         if (element.matches(".ans" + global[0])){
+            score += 15;
+            console.log("Right answer");
+            counter++;
+          
+         }
+        else if( element.matches(".ans" + global[1])
+        || element.matches(".ans" + global[2]) || element.matches(".ans" + global[3])){
+            timer -= 10;
+           console.log("Wrong anser");
+           counter++;
+         
     
-    if( element.matches(".ans" + global[1])
-     || element.matches(".ans" + global[2]) || element.matches(".ans" + global[3])){
-        console.log("Wrong anser");
-        counter++;
-        questionGenerator();
+        }
 
-     }
-     else if (element.matches(".ans" + global[0])){
-        console.log("Right answer");
-        counter++;
-        questionGenerator();
-     }
+
     }
     )
+
+
 }
     
     
@@ -209,7 +218,7 @@ var testing = function(){
 //Timer Function
 var timerText = function(){
     var timeLeft = document.querySelector(".timerText");
-   
+    timer = 75;
     timeLeft.textContent = "Time: " + timer + " seconds";
     timer--;
     var timerInterval = setInterval(function()
